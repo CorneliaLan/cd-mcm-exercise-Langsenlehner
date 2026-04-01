@@ -46,42 +46,18 @@
    - Which base image contributes the most vulnerabilities?
    - Can you reduce vulnerabilities by changing the base image? Try switching to `scratch` or `distroless`.
 
-4. **Add a Trivy scan job to the CI pipeline:**
-   ```yaml
-   trivy-scan:
-     runs-on: ubuntu-latest
-     needs: docker-build
-     steps:
-       - uses: actions/checkout@v4
-       - name: Build image
-         run: docker build -t product-catalog:scan .
-       - name: Run Trivy vulnerability scanner
-         uses: aquasecurity/trivy-action@master
-         with:
-           image-ref: 'product-catalog:scan'
-           format: 'table'
-           exit-code: '1'
-           severity: 'CRITICAL,HIGH'
-   ```
+4. **Add a Trivy scan job to the CI pipeline** (see the TODO in `ci.yml`) that:
+   - Runs after the `docker-build` job
+   - Scans the built Docker image using `aquasecurity/trivy-action@master`
+   - Fails the build if CRITICAL or HIGH vulnerabilities are found
+   - Outputs results in `table` format
 
-5. **Upload the Trivy report as a build artifact** so it can be downloaded from the Actions run:
-   ```yaml
-   - name: Generate Trivy JSON report
-     if: always()
-     uses: aquasecurity/trivy-action@master
-     with:
-       image-ref: 'product-catalog:scan'
-       format: 'json'
-       output: 'trivy-report.json'
-       severity: 'CRITICAL,HIGH,MEDIUM'
+   > **Hint:** The Trivy action needs `image-ref`, `format`, `exit-code`, and `severity` parameters.
 
-   - name: Upload Trivy report
-     if: always()
-     uses: actions/upload-artifact@v4
-     with:
-       name: trivy-vulnerability-report
-       path: trivy-report.json
-   ```
+5. **Upload the Trivy scan results as a build artifact:**
+   - Generate a JSON report (use `format: 'json'` and `output` parameter)
+   - Upload it using `actions/upload-artifact@v4`
+   - Use `if: always()` so the report is uploaded even if the scan finds vulnerabilities
 
 **Deliverable:** Trivy scan output (before and after base image optimization). Updated CI workflow. Trivy JSON report downloadable as artifact from the Actions run.
 
@@ -96,13 +72,12 @@
    govulncheck ./...
    ```
 
-2. **Add dependency scanning to the CI pipeline:**
-   ```yaml
-   - name: Run govulncheck
-     run: |
-       go install golang.org/x/vuln/cmd/govulncheck@latest
-       govulncheck ./...
-   ```
+2. **Add a `vulnerability-scan` job to the CI pipeline** (see the TODO in `ci.yml`) that:
+   - Runs after the `test` job
+   - Installs `govulncheck` and runs it against the codebase
+   - Fails if known vulnerabilities are found
+
+   > **Hint:** Use `go install golang.org/x/vuln/cmd/govulncheck@latest` to install the tool.
 
 3. **If vulnerabilities are found:**
    - Update the affected dependencies (`go get -u <module>`)
