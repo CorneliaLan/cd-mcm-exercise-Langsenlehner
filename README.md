@@ -64,7 +64,26 @@
            severity: 'CRITICAL,HIGH'
    ```
 
-**Deliverable:** Trivy scan output (before and after base image optimization). Updated CI workflow.
+5. **Upload the Trivy report as a build artifact** so it can be downloaded from the Actions run:
+   ```yaml
+   - name: Generate Trivy JSON report
+     if: always()
+     uses: aquasecurity/trivy-action@master
+     with:
+       image-ref: 'product-catalog:scan'
+       format: 'json'
+       output: 'trivy-report.json'
+       severity: 'CRITICAL,HIGH,MEDIUM'
+
+   - name: Upload Trivy report
+     if: always()
+     uses: actions/upload-artifact@v4
+     with:
+       name: trivy-vulnerability-report
+       path: trivy-report.json
+   ```
+
+**Deliverable:** Trivy scan output (before and after base image optimization). Updated CI workflow. Trivy JSON report downloadable as artifact from the Actions run.
 
 ---
 
