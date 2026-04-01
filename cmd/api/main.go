@@ -42,12 +42,14 @@ func main() {
 
 		h := handler.NewPostgresHandler(pgStore)
 		h.RegisterRoutes(r)
-		fmt.Printf("Product Catalog API (PostgreSQL) listening on :%s\n", port)
+		fmt.Printf("Product Catalog API (PostgreSQL) listening on :%s
+", port)
 	} else {
 		memStore := store.NewMemoryStore()
 		h := handler.NewHandler(memStore)
 		h.RegisterRoutes(r)
-		fmt.Printf("Product Catalog API (in-memory) listening on :%s\n", port)
+		fmt.Printf("Product Catalog API (in-memory) listening on :%s
+", port)
 	}
 
 	if err := http.ListenAndServe(":"+port, r); err != nil {
