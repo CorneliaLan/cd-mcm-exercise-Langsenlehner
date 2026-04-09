@@ -1,0 +1,113 @@
+\documentclass[a4paper,11pt]{article}
+
+% --------------------------------
+% Sprache, Schrift, Layout
+% --------------------------------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{setspace}
+\setstretch{1.15}
+
+% --------------------------------
+% Mathematik, Bilder, Links
+% --------------------------------
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{caption}
+
+% --------------------------------
+% Link-Setup
+% --------------------------------
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue,
+    pdftitle={Übung 1 - Git Basics},
+    pdfauthor={Langsenlehner Cornelia}
+}
+
+% --------------------------------
+% Bildpfade
+% --------------------------------
+\graphicspath{{screenshots/Ex1/}}
+
+% --------------------------------
+% Absatzlayout
+% --------------------------------
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+
+% --------------------------------
+% Eigene Titelseite
+% --------------------------------
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \vspace*{3cm}
+
+    {\scshape\Large Dokumentation der Übung\par}
+    \vspace{1cm}
+
+    {\huge\bfseries Git Basics -- PRs, Interactive Rebase \& Unit Tests\par}
+    \vspace{2cm}
+
+    {\Large Übung 1\par}
+    \vspace{2cm}
+
+    \begin{tabular}{rl}
+        \textbf{Name:} & Langsenlehner Cornelia, BSc \\
+        \textbf{Matrikelnummer:} & s2510455006 \\
+        \textbf{Datum:} & \today \\
+    \end{tabular}
+
+    \vfill
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\section{Task 1}
+
+Das Repository wurde erfolgreich geforkt.
+
+\textbf{Forked Repository:}  
+\href{https://github.com/CorneliaLan/cd-mcm-exercise-Langsenlehner.git}{github.com/CorneliaLan/cd-mcm-exercise-Langsenlehner.git}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{/Users/cornelia/Devs/CI-CD-MCM-Langsenlehner/screenshots/Ex1/fork.png}
+    \caption{Geforktes Repository auf GitHub}
+    \label{fig:fork}
+\end{figure}
+
+Zusätzlich wurde das Projekt ausgeführt und überprüft.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{/Users/cornelia/Devs/CI-CD-MCM-Langsenlehner/screenshots/Ex1/run.png}
+    \caption{Erfolgreicher Projektlauf}
+    \label{fig:run}
+\end{figure}
+
+\section{Task 2}
+
+Beschreibung und Dokumentation von Task 2.
+
+\section{Task 3}
+
+Beschreibung und Dokumentation von Task 3.
+
+\section{Task 4}
+
+Beschreibung und Dokumentation von Task 4.
+
+\end{document}
+
