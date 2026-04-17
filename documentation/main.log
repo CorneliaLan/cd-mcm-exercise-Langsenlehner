@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2026.1.29)  9 APR 2026 16:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2026.1.29)  17 APR 2026 15:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -539,29 +539,61 @@ File: /Users/cornelia/Devs/CI-CD-MCM-Langsenlehner/screenshots/Ex1/run.png Graph
 <use /Users/cornelia/Devs/CI-CD-MCM-Langsenlehner/screenshots/Ex1/run.png>
 Package pdftex.def Info: /Users/cornelia/Devs/CI-CD-MCM-Langsenlehner/screenshots/Ex1/run.png  used on input line 95.
 (pdftex.def)             Requested size: 364.19667pt x 69.66676pt.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 102.
+ (/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `lmtt' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 108.
+ (/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/lm/ts1lmr.fd
+File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+
+[2{/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc} </Users/cornelia/Devs/CI-CD-MCM-Langsenlehner/screenshots/Ex1/fork.png> </Users/cornelia/Devs/CI-CD-MCM-Langsenlehner/screenshots/Ex1/run.png>]
+</Users/cornelia/Devs/CI-CD-MCM-Langsenlehner/screenshots/Ex2/test_run2.png, id=52, 564.1075pt x 230.8625pt>
+File: /Users/cornelia/Devs/CI-CD-MCM-Langsenlehner/screenshots/Ex2/test_run2.png Graphic file (type png)
+<use /Users/cornelia/Devs/CI-CD-MCM-Langsenlehner/screenshots/Ex2/test_run2.png>
+Package pdftex.def Info: /Users/cornelia/Devs/CI-CD-MCM-Langsenlehner/screenshots/Ex2/test_run2.png  used on input line 129.
+(pdftex.def)             Requested size: 364.19667pt x 149.05135pt.
+</Users/cornelia/Devs/CI-CD-MCM-Langsenlehner/screenshots/Ex3/PullRequest.png, id=54, 1364.09625pt x 517.935pt>
+File: /Users/cornelia/Devs/CI-CD-MCM-Langsenlehner/screenshots/Ex3/PullRequest.png Graphic file (type png)
+<use /Users/cornelia/Devs/CI-CD-MCM-Langsenlehner/screenshots/Ex3/PullRequest.png>
+Package pdftex.def Info: /Users/cornelia/Devs/CI-CD-MCM-Langsenlehner/screenshots/Ex3/PullRequest.png  used on input line 155.
+(pdftex.def)             Requested size: 364.19667pt x 138.27951pt.
 
 
-[2 </Users/cornelia/Devs/CI-CD-MCM-Langsenlehner/screenshots/Ex1/fork.png> </Users/cornelia/Devs/CI-CD-MCM-Langsenlehner/screenshots/Ex1/run.png>] (./main.aux)
+[3 </Users/cornelia/Devs/CI-CD-MCM-Langsenlehner/screenshots/Ex2/test_run2.png>]
+</Users/cornelia/Devs/CI-CD-MCM-Langsenlehner/screenshots/Ex4/4.png, id=61, 714.67pt x 278.03876pt>
+File: /Users/cornelia/Devs/CI-CD-MCM-Langsenlehner/screenshots/Ex4/4.png Graphic file (type png)
+<use /Users/cornelia/Devs/CI-CD-MCM-Langsenlehner/screenshots/Ex4/4.png>
+Package pdftex.def Info: /Users/cornelia/Devs/CI-CD-MCM-Langsenlehner/screenshots/Ex4/4.png  used on input line 179.
+(pdftex.def)             Requested size: 364.19667pt x 141.68758pt.
+
+
+[4 </Users/cornelia/Devs/CI-CD-MCM-Langsenlehner/screenshots/Ex3/PullRequest.png> </Users/cornelia/Devs/CI-CD-MCM-Langsenlehner/screenshots/Ex4/4.png>] (./main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 2AFCA4455D525868D7482C9EA21AF0F1;304.
+(rerunfilecheck)             Checksum: DD38A640470B898EB2DB957679E1F3C3;660.
  ) 
 Here is how much of TeX's memory you used:
- 15491 strings out of 473190
- 254508 string characters out of 5704335
- 694037 words of memory out of 5000000
- 38486 multiletter control sequences out of 15000+600000
- 597856 words of font info for 85 fonts, out of 8000000 for 9000
+ 15646 strings out of 473190
+ 258620 string characters out of 5704335
+ 697255 words of memory out of 5000000
+ 38591 multiletter control sequences out of 15000+600000
+ 600042 words of font info for 105 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,6n,79p,1060b,496s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb></opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/lm/lmr10.pfb></opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/lm/lmr12.pfb>
-Output written on main.pdf (3 pages, 483677 bytes).
+ 75i,6n,79p,1060b,552s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb></opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/lm/lmr10.pfb></opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/lm/lmr12.pfb></opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
+Output written on main.pdf (5 pages, 1332460 bytes).
 PDF statistics:
- 78 PDF objects out of 1000 (max. 8388607)
- 58 compressed objects within 1 object stream
- 10 named destinations out of 1000 (max. 500000)
- 22571 words of extra memory for PDF output out of 24883 (max. 10000000)
+ 106 PDF objects out of 1000 (max. 8388607)
+ 75 compressed objects within 1 object stream
+ 15 named destinations out of 1000 (max. 500000)
+ 25146 words of extra memory for PDF output out of 29859 (max. 10000000)
 

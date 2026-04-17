@@ -74,7 +74,7 @@
 \tableofcontents
 \newpage
 
-\section{Task 1}
+\section{Task 1 \- Repository Setup} 
 
 Das Repository wurde erfolgreich geforkt.
 
@@ -97,17 +97,89 @@ Zusätzlich wurde das Projekt ausgeführt und überprüft.
     \label{fig:run}
 \end{figure}
 
-\section{Task 2}
+\section{Task 2 \- Unit Tests}
 
-Beschreibung und Dokumentation von Task 2.
+Im Rahmen dieser Aufgabe wurde die Testdatei im Package \texttt{internal/store} vervollständigt. 
+Ziel war es, die grundlegenden CRUD-Funktionalitäten des \texttt{MemoryStore} durch Unit Tests abzusichern.
 
-\section{Task 3}
+Es wurden folgende Tests implementiert:
 
-Beschreibung und Dokumentation von Task 3.
+\begin{itemize}
+    \item \textbf{TestCreateAndGet:} Ein Produkt wird erstellt und anschließend mit \texttt{GetByID} wieder abgerufen, um sicherzustellen, dass die Daten korrekt gespeichert wurden.
+    
+    \item \textbf{TestUpdateProduct:} Ein bestehendes Produkt wird aktualisiert und danach überprüft, ob die Änderungen erfolgreich übernommen wurden.
+    
+    \item \textbf{TestDeleteProduct:} Ein Produkt wird erstellt und anschließend gelöscht. Danach wird geprüft, ob \texttt{GetByID} den erwarteten Fehler zurückgibt.
+    
+    \item \textbf{TestGetByIDNotFound:} Es wird überprüft, dass bei einer nicht existierenden ID der Fehler \texttt{ErrNotFound} zurückgegeben wird.
+\end{itemize}
 
-\section{Task 4}
+Zusätzlich wurde für \texttt{TestGetByIDNotFound} ein table-driven Test verwendet, um mehrere Eingabewerte strukturiert zu prüfen.
 
-Beschreibung und Dokumentation von Task 4.
+Die Tests wurden mit folgendem Befehl ausgeführt:
+
+\begin{verbatim}
+go test -v ./internal/store/
+\end{verbatim}
+
+Die Ausgabe zeigt, dass alle Tests erfolgreich bestanden wurden, wodurch die korrekte Funktionalität der implementierten Methoden bestätigt wird.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{/Users/cornelia/Devs/CI-CD-MCM-Langsenlehner/screenshots/Ex2/test_run2.png}
+    \caption{Erfolgreiche Ausführung der Unit Tests}
+    \label{fig:unit-tests}
+\end{figure}
+
+\section{Task 3 \- Pull Request}
+
+
+Für diese Aufgabe wurde ein eigener Feature-Branch erstellt, um Änderungen isoliert vom Hauptbranch zu entwickeln. 
+Dazu wurde zunächst der aktuelle Stand von \texttt{main} ausgecheckt und anschließend ein neuer Branch mit dem Namen \texttt{feature/about-me} erstellt.
+
+In diesem Branch wurde die Datei \texttt{about-me.md} angelegt. Diese enthält grundlegende Informationen zur Person, darunter Name und Studiengang, bisherige Erfahrungen mit Go und Git, Lernziele für die Lehrveranstaltung sowie eine kurze Begründung, warum Continuous Delivery für agile Teams wichtig ist.
+
+Die Änderungen wurden mit einer Commit-Message gemäß Conventional Commits festgehalten:
+\begin{verbatim}
+docs: add about-me with background info
+\end{verbatim}
+
+Anschließend wurde der Branch auf das Remote-Repository gepusht und ein Pull Request in den \texttt{main}-Branch erstellt. 
+Ein Review wurde angefragt und der Pull Request nach Freigabe erfolgreich gemerged.
+
+\textbf{Pull Request:} \\
+\url{https://github.com/CorneliaLan/cd-mcm-exercise-Langsenlehner/pull/1}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{/Users/cornelia/Devs/CI-CD-MCM-Langsenlehner/screenshots/Ex3/PullRequest.png}
+    \caption{Erfolgreich gemergter Pull Request}
+    \label{fig:pr-merged}
+\end{figure}
+
+\section{Task 4 \- Interactive Rebase}
+
+Zur Bereinigung der Commit-Historie wurde auf dem Branch \texttt{my-rebase-practice} ein interaktiver Rebase durchgeführt. 
+Dafür wurde der Befehl \texttt{git rebase -i HEAD\textasciitilde 18} verwendet, um die letzten 18 Commits zu bearbeiten.
+
+Im Rahmen des Rebase wurden folgende Anpassungen vorgenommen:
+
+\begin{itemize}
+    \item \textbf{Reword:} Die fehlerhafte Commit-Message \texttt{commmit} wurde auf \texttt{commit} korrigiert.
+    \item \textbf{Squash:} Die drei Commits mit dem Titel \texttt{fix readme} wurden zu einem einzigen Commit zusammengeführt.
+    \item \textbf{Reorder:} Zusammengehörige Commits wurden logisch gruppiert und in eine bessere Reihenfolge gebracht.
+    \item \textbf{Drop:} Der Commit \texttt{add debug output} wurde aus der Historie entfernt.
+\end{itemize}
+
+Nach dem Rebase wurde die bereinigte Commit-Historie mit \texttt{git log --oneline} überprüft. 
+Da ein Rebase die Commit-Historie verändert, musste der Branch anschließend mit \texttt{git push --force-with-lease} aktualisiert werden.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{/Users/cornelia/Devs/CI-CD-MCM-Langsenlehner/screenshots/Ex4/4.png}
+    \caption{Bereinigte Commit-Historie nach dem interaktiven Rebase}
+    \label{fig:rebase-log}
+\end{figure}
 
 \end{document}
 
