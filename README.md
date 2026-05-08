@@ -1,3 +1,4 @@
+![CI](https://github.com/CorneliaLan/cd-mcm-exercise-Langsenlehner/actions/workflows/ci.yml/badge.svg)
 # Exercise 2: Microservice Architecture, Docker & GitHub Actions
 
 **Course:** Continuous Delivery in Agile Software Development (Master)
