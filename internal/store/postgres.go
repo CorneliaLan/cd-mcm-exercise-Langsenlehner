@@ -3,6 +3,7 @@ package store
 import (
 	"database/sql"
 	"fmt"
+	"log"
 
 	_ "github.com/lib/pq"
 	"github.com/mrckurz/CI-CD-MCM/internal/model"
@@ -47,8 +48,11 @@ func (s *PostgresStore) GetAll() ([]model.Product, error) {
 	if err != nil {
 		return nil, err
 	}
-	defer rows.Close()
-
+	defer func() {
+		if err := rows.Close(); err != nil {
+			log.Printf("failed to close rows: %v", err)
+		}
+	}()
 	var products []model.Product
 	for rows.Next() {
 		var p model.Product

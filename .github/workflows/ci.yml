@@ -8,18 +8,16 @@ on:
 
 jobs:
   test:
-    name: Test Go ${{ matrix.go-version }} on ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        go-version: ["1.25", "1.26"]
-        os: [ubuntu-latest, macos-latest]
+        go-version: ["1.26"]
+        # TODO: Add go-version "1.25" to the matrix for multi-version testing
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Go
+      - name: Set up Go ${{ matrix.go-version }}
         uses: actions/setup-go@v5
         with:
           go-version: ${{ matrix.go-version }}
@@ -30,41 +28,17 @@ jobs:
       - name: Run tests with coverage
         run: go test -v -coverprofile=coverage.out ./...
 
-      - name: Check coverage threshold
-        run: |
-          COVERAGE=$(go tool cover -func=coverage.out | grep total | awk '{print substr($3, 1, length($3)-1)}')
-          echo "Coverage: $COVERAGE%"
-          awk -v coverage="$COVERAGE" 'BEGIN { if (coverage < 20) exit 1 }'
-
-      - name: Generate HTML coverage report
-        run: go tool cover -html=coverage.out -o coverage.html
-
-      - name: Upload coverage report
+      - name: Upload coverage artifact
         uses: actions/upload-artifact@v4
         with:
-          name: coverage-html-${{ matrix.go-version }}-${{ matrix.os }}
-          path: coverage.html
+          name: coverage-${{ matrix.go-version }}
+          path: coverage.out
 
       - name: Build
         run: go build -o api-server ./cmd/api
 
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up Go
-        uses: actions/setup-go@v5
-        with:
-          go-version: "1.26"
-
-      - name: Run golangci-lint
-        uses: golangci/golangci-lint-action@v8
-        with:
-          version: v2.12.2
-          
+  # TODO: Add lint job using golangci-lint
+  # Hint: Use the golangci/golangci-lint-action@v4 action
 
   docker-build:
     runs-on: ubuntu-latest
@@ -77,8 +51,12 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Build Docker image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v5
         with:
           context: .
           push: false
           tags: product-catalog:${{ github.sha }}
+
+  # TODO: Add sonarcloud job
+  # Hint: Use the SonarSource/sonarqube-scan-action or sonarcloud-github-action
+  # You will need to configure sonar-project.properties
