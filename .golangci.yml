@@ -14,17 +14,16 @@ linters:
     - misspell
     - gocritic
 
-formatters:
-  enable:
-    - gofmt
+  settings:
+    errcheck:
+      check-type-assertions: true
 
-settings:
-  errcheck:
-    check-type-assertions: true
-
-issues:
   exclusions:
     rules:
       - path: _test\.go
         linters:
           - errcheck
+
+formatters:
+  enable:
+    - gofmt
