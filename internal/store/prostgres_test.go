@@ -136,3 +136,31 @@ func TestPostgresDelete(t *testing.T) {
 		t.Fatalf("expected no error, got %v", err)
 	}
 }
+
+func TestPostgresUpdateNotFound(t *testing.T) {
+	s, mock, cleanup := newMockPostgresStore(t)
+	defer cleanup()
+
+	mock.ExpectExec("UPDATE products SET").
+		WithArgs("Missing", 1.99, 999).
+		WillReturnResult(sqlmock.NewResult(0, 0))
+
+	_, err := s.Update(999, model.Product{Name: "Missing", Price: 1.99})
+	if err != ErrNotFound {
+		t.Fatalf("expected ErrNotFound, got %v", err)
+	}
+}
+
+func TestPostgresDeleteNotFound(t *testing.T) {
+	s, mock, cleanup := newMockPostgresStore(t)
+	defer cleanup()
+
+	mock.ExpectExec("DELETE FROM products WHERE id = \\$1").
+		WithArgs(999).
+		WillReturnResult(sqlmock.NewResult(0, 0))
+
+	err := s.Delete(999)
+	if err != ErrNotFound {
+		t.Fatalf("expected ErrNotFound, got %v", err)
+	}
+}
