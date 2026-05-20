@@ -8,6 +8,48 @@ on:
 
 jobs:
   test:
+    name: Test Go ${{ matrix.go-version }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        go-version: ["1.25", "1.26"]
+        os: [ubuntu-latest, macos-latest]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: ${{ matrix.go-version }}
+
+      - name: Download dependencies
+        run: go mod download
+
+      - name: Run tests with coverage
+        run: go test -v -coverprofile=coverage.out ./...
+
+      - name: Check coverage threshold
+        run: |
+          COVERAGE=$(go tool cover -func=coverage.out | grep total | awk '{print substr($3, 1, length($3)-1)}')
+          echo "Coverage: $COVERAGE%"
+          awk -v coverage="$COVERAGE" 'BEGIN { if (coverage < 80) exit 1 }'
+
+      - name: Generate HTML coverage report
+        run: go tool cover -html=coverage.out -o coverage.html
+
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-html-${{ matrix.go-version }}-${{ matrix.os }}
+          path: coverage.html
+
+      - name: Build
+        run: go build -o api-server ./cmd/api
+
+  lint:
+    name: Lint
     runs-on: ubuntu-latest
 
     steps:
@@ -18,14 +60,10 @@ jobs:
         with:
           go-version: "1.26"
 
-      - name: Download dependencies
-        run: go mod download
-
-      - name: Run tests
-        run: go test -v ./...
-
-      - name: Build
-        run: go build -o api-server ./cmd/api
+      - name: Run golangci-lint
+        uses: golangci/golangci-lint-action@v4
+        with:
+          args: --config=.golangci.yml
 
   docker-build:
     runs-on: ubuntu-latest
